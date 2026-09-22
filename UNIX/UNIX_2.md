@@ -58,6 +58,9 @@ Es la pantalla por donde se muestra el error.
 
 `uniq fichero.txt` : muestra todas las líneas una sola vez (las repetidas no las muestra)
 
+> [!IMPORTANT]
+> Las líneas deben estar ordenadas con `sort`, sino `uniq` no surte efecto
+
 `head/tail` : muestran las N primeras/últimas líneas con el parámetro `-n`
 
 `more fich.txt` : es similar al cat, pero si es un archivo muy grande, cat te muestra todo el contenido de golpe. More lo que hace es mostrártelo en formato página, para evitar precisamente lo que hace cat, y poder pasar páginas cómodamente.
