@@ -41,7 +41,7 @@ Siendo `/` el directorio <u>**raíz**</u>/<u>**padre**</u> del que cuelgan los d
 `ls` : muestra el contenido de un directorio
 
 - `-a` : muestra además los archivos/directorios ocultos del directorio
-- `-l` : muestra información más detallada y organizada del contenido de un directorio
+- `-lt` : muestra información más detallada y organizada del contenido de un directorio y por fecha de modificación
 
 `mkdir dir` : crea el directorio "dir" 
 
@@ -66,9 +66,13 @@ dir1
 
 `cat fich.txt` : muestra el contenido de un fichero. Sólo válido para ficheros de texto (.mp3, .png, ... NO; .txt, .java, .py, ... SI)
 
+- `-n` : añade el número de la línea a la izquierda
+
 `rm fich.txt` : elimina un archivo
 
 - `-r` : con la opción -r podemos borrar también directorios
+
+- `-f` : fuerza el borrado de fichero, aunque esté protegido contra escritura
 
 > [!CAUTION]
 > rm es peligroso, lo que se borra no se recupera. La opción -r borra TODO lo que haya dentro del directorio. Hay que tener cuidado.
@@ -82,6 +86,8 @@ dir1
 `mv origen/fich_origen destino/fich_destino` : similar al comando "cp", pero en vez de copiar y pegar, este comando **corta** y pega.
 
 `ln origen destino` : crea un enlace entre un archivo/directorio origen y otro destino. Es similar a copiar, solo que al copiar generamos un archivo nuevo igual al original y al enlazar sólo creamos un nombre, por lo que todos los cambios que ocurran en el origen se ven reflejados en el destino. Es similar al concepto de acceso directo en Windows.
+
+## Permisos
 
 `chmod` : cambia los permisos de un fichero/directorio.
 
@@ -131,3 +137,35 @@ tendríamos que hacer `chmod 567 fich.txt`
 `date` : muestra información de la fecha del sistema
 
 `echo "Mensaje"` : muestra el mensaje por pantalla
+
+## Metacaracteres
+
+Los metacaracteres sirven para especificar en una única expresión un conjunto de ficheros/directorios.
+
+`?` : este metacaracter indica cualquier caracter
+
+```sh
+cat fich.??? # muestra el contenido de cualquier archivo que se 
+# llame fich y termine por .txt, .png, .jpg, ...
+```
+
+`*` : este metacaracter se incluye en una expresión por cualquier cadena de caracteres
+```sh
+mv *.txt ../ # mueve todos los ficheros que acaben por .txt al 
+# directorio padre del actual
+```
+
+---
+
+`find` : comando que permite buscar archivos o directorios en el sistema de archivos.
+
+- `-type` : permite filtrar por ficheros (`f`), directorios (`d`)...
+- `-maxdepth` : define la profundidad máxima de la búsqueda. Si le ponemos un 0, busca sólo archivos y directorios sin meterse dentro de carpetas. Si le ponemos un 1 se mete en las carpetas pero no en las subcarpetas. Si le ponemos un 2...
+- `-name` : filtra por nombres de archivos o directorios (se suele poner entre comillas dobles)
+- `-perm` : filtra por permisos del archivo o directorio. Para usar el parámetro -exec debemos especificarle la salida de la búsqueda mediante llaves `{}`. Si usamos el delimitador `\;` (se pone ; para escapar la barra invertida), ejecutamos el comando una vez por cada elemento encontrado. Si usamos el delimitador `+`, se concatena toda la salida mediante espacios y se usa una única vez el comando (se suele usar el delimitador `+` por eficiencia, pero hay veces que no queda más remedio que usar `\;`). Ejemplo :
+
+```sh
+find . -name "*.c" -exec echo {} \;
+```
+
+Este comando busca en el directorio actual todos los archivos que acaben por extensión ".c" y para cada salida del comando, va a tomarla una por una y la va a imprimir por pantalla.
