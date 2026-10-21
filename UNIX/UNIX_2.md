@@ -69,6 +69,8 @@ Es la pantalla por donde se muestra el error.
 
 `wc fich.txt` : cuenta el número de líneas que tiene el archivo.
 
+- `-l` : cuenta el número de líneas que tiene un archivo o texto
+
 `tr char1 char2` : sustituye el char1 por el char2 (pueden ser conjuntos de caracteres también)
 
 - `-d char1:` : elimina el char1
