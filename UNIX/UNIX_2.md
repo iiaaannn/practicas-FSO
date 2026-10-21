@@ -49,7 +49,7 @@ Es la pantalla por donde se muestra el error.
 
 - `.` : coincide con cualquier caracter
 - `[]` : define un conjunto de caracteres (funciona como un OR). También se pueden establecer rangos, por ejemplo : `[ab]` significa "a" o "b", y `[a-z]` significa todas las minúsculas
-- `*-` : significa la repetición de 0 o más veces el patrón anterior. Por ejemplo `a*` es .a repetición de la letra "a" 0 o más veces, `aa*` 1 o más veces...
+- `*-` : significa la repetición de 0 o más veces el patrón anterior. Por ejemplo `a*` es la repetición de la letra "a" 0 o más veces, `aa*` 1 o más veces...
 
 > [!IMPORTANT]
 > No confundir con el metacaracter `*`
