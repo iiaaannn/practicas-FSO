@@ -81,6 +81,8 @@ dir1
 
 `cp origen/fich_origen destino/fich_destino` : copia ficheros. Jugando con el comando, podemos cambiar de directorio, de nombre y de directorio o solo el nombre (es como copiar en windows).
 
+- `-r` : con la opción "-r" de recursivo, nos aseguramos de que copie recursivamente todos los archivos de un directorio por ejemplo.
+
 `cmp fich1 fich2` : compara dos ficheros (si no muestra nada es que son iguales)
 
 `mv origen/fich_origen destino/fich_destino` : similar al comando "cp", pero en vez de copiar y pegar, este comando **corta** y pega.
